@@ -3,11 +3,9 @@ package com.persistence;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.util.PropertiesLoader;
-
 import com.weather.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -15,9 +13,18 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * The type Weather dao.
+ */
 public class weatherDAO implements PropertiesLoader {
+    /**
+     * The Properties.
+     */
     Properties properties;
     private final Logger logger = LogManager.getLogger(this.getClass());
+    /**
+     * The constant API_URL.
+     */
     public static String API_URL;
 
     /**
@@ -35,6 +42,12 @@ public class weatherDAO implements PropertiesLoader {
     }
 
 
+    /**
+     * Gets current weather.
+     *
+     * @param zipcode the zipcode
+     * @return the current weather
+     */
     public WeatherRep getCurrentWeather(int zipcode) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
@@ -47,11 +60,15 @@ public class weatherDAO implements PropertiesLoader {
         } catch (JsonProcessingException e) {
             logger.error("Error processing JSON... " + e);
         }
-//        logger.info("    *****RESPONSE2: " + currentResponse.getLocation().getName() + ", " +
-//                currentResponse.getLocation().getRegion() + " " + currentResponse.getCurrent().getTempF());
         return currentResponse;
     }
 
+    /**
+     * Gets forecast.
+     *
+     * @param zipcode the zipcode
+     * @return the forecast
+     */
     public Forecast getForecast(int zipcode) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
@@ -90,5 +107,4 @@ public class weatherDAO implements PropertiesLoader {
         String result = properties.getProperty("weatherapi.forecast") + zipcode + properties.getProperty("weatherapi.key");
         return result;
     }
-
 }

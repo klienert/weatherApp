@@ -26,12 +26,13 @@ public class ZipcodeSearch extends HttpServlet {
             req.setAttribute("loc", dao.getCurrentWeather(Integer.parseInt(req.getParameter("zipcode"))).getLocation().getAllLocale());
             req.setAttribute("curr", dao.getCurrentWeather(Integer.parseInt(req.getParameter("zipcode"))).getCurrent().getAllCurrent());
             req.setAttribute("cond", dao.getCurrentWeather(Integer.parseInt(req.getParameter("zipcode"))).getCurrent().getCondition().getAllCondition());
-//            req.setAttribute("forecast", dao.getForecast(Integer.parseInt(req.getParameter("zipcode"))).getForecast().allForecast());
-//            req.setAttribute("forecast", dao.getForecast(Integer.parseInt(req.getParameter("zipcode"))).getForecast().allForecast());
+
 
             logger.info("    " + req.getParameter("zipcode") + " " + dao.getCurrentWeather(Integer.parseInt(req.getParameter("zipcode"))).getLocation().getName());
-//        } else {
-//            req.setAttribute("zip", dao.getCurrentWeather(77340).getCurrent().getTempF());
+        } else {
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/error.jsp");
+            dispatcher.forward(req, resp);
+
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/results.jsp");

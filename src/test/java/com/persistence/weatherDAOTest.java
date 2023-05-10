@@ -1,9 +1,11 @@
 package com.persistence;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class weatherDAOTest {
+    private final Logger logger = LogManager.getLogger(this.getClass());
     weatherDAO dao;
 
     @Test
@@ -30,10 +32,9 @@ class weatherDAOTest {
     @Test
     public void getWeatherFeelsLikeTestSuccess() {
         dao = new weatherDAO();
-        // took a cue from Paula's video, hard to test this since it is constantly changing.
-        System.out.println("Feels like " + dao.getCurrentWeather(77340).getCurrent().getFeelslikeF() + " in Huntsville, TX");
-        System.out.println("Local Time in Madison, WI is: " + dao.getCurrentWeather(53717).getLocation().getLocaltime());
-        System.out.println("It is " + dao.getCurrentWeather(53818).getCurrent().getTempF() + " degrees in Platteville, WI");
+        // Check logs, this is constantly changing so there is no 'real' test here...
+        logger.info("Feels like " + dao.getCurrentWeather(77340).getCurrent().getFeelslikeF() + " in Huntsville, TX");
+        logger.info("Local Time in Madison, WI is: " + dao.getCurrentWeather(53717).getLocation().getLocaltime());
+        logger.info("It is " + dao.getCurrentWeather(53818).getCurrent().getTempF() + " degrees in Platteville, WI");
     }
-
 }

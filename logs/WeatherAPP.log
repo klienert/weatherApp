@@ -1,1 +1,4 @@
 [INFO ] 2023-03-29 14:07:39.893 [http-nio-8088-exec-5] ZipcodeSearch -     77340 Huntsville
+[INFO ] 2023-05-10 17:15:23.753 [main] weatherDAOTest - Feels like 77.4 in Huntsville, TX
+[INFO ] 2023-05-10 17:15:23.990 [main] weatherDAOTest - Local Time in Madison, WI is: 2023-05-10 17:15
+[INFO ] 2023-05-10 17:15:24.221 [main] weatherDAOTest - It is 76.1 degrees in Platteville, WI
