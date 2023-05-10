@@ -98,7 +98,7 @@ public class weatherDAO implements PropertiesLoader {
     }
 
     /**
-     * Helper method for weather forecase API url
+     * Helper method for weather forecast API url
      * @param zipcode
      * @return  api call for weather forecast
      */
