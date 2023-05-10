@@ -129,7 +129,7 @@
 
 
   <build>
-    <finalName>week-9-RESTful-exercise-klienert</finalName>
+    <finalName>WeatherApplication-klienert</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
